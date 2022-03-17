@@ -8,6 +8,18 @@
 
 <body>
     <script>
+        //computerPlay function RANDOMLY returns "Rock", "Paper", or "Scissors".
+        //create an array that holds strings "Rock", "Paper", "Scissors"
+        //get a random number from 0 (starting index of array) to lenghth of array minus 1
+        // - create a function to randomly get a number between given min and max args
+        function computerPlay() {
+            let array = ["Rock", "Paper", "Scissors"];
+            return array[getRandom(0, array.length)];
+        }
+
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - 0) + 0);
+        }
     </script>
 </body>
 
