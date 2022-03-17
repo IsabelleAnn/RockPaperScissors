@@ -13,13 +13,64 @@
         //get a random number from 0 (starting index of array) to lenghth of array minus 1
         // - create a function to randomly get a number between given min and max args
         function computerPlay() {
-            let array = ["Rock", "Paper", "Scissors"];
+            let array = ["rock", "paper", "scissors"];
             return array[getRandom(0, array.length)];
         }
 
         function getRandom(min, max) {
             return Math.floor(Math.random() * (max - 0) + 0);
         }
+
+        //function that plays one round of rock, paper, scissors:
+        //parameters are playerSelection and computerSelection
+        //returns a string that declares winner
+        //game rules: paper beats rock, scissors beats paper, rock beats scissors, same outcome = tie
+        //if player = paper, check if comp = rock or comp = scissors, else tie
+        function gameOutcome(playerSelection, computerSelection) {
+            if (playerSelection === computerSelection) {
+                return "It's a tie!";
+            }
+            switch (playerSelection) {
+                case "rock":
+                    if (computerSelection === "paper") {
+                        return "You lose! Paper beats Rock!";
+                    } else {
+                        return "You win! Rock beats Scissors!";
+                    }
+                    break;
+                case "paper":
+                    if (computerSelection === "rock") {
+                        return "You win! Paper beats Rock!";
+                    } else {
+                        return "You lose! Scissors beats Paper!";
+                    }
+                    break;
+                case "scissors":
+                    if (computerSelection === "rock") {
+                        return "You lose! Rock beats Scissors!";
+                    } else {
+                        return "You win! Scissors beats Paper!";
+                    }
+                    break;
+            }
+        };
+
+        //START GAME:
+        alert("Lets play Rock, Paper, Scissors!");
+
+        //Player's Turn:
+        let player = prompt("Choose Rock, Paper or Scissors").toLowerCase();
+        //check input until valid
+        while (player !== "rock" && player !== "paper" && player !== "scissors") {
+            player = prompt("Choose Rock, Paper or Scissors").toLowerCase();
+        }
+        console.log(`Player: ${player}`);
+
+        //Computer's Turn:
+        let comp = computerPlay();
+        console.log(`Computer: ${comp}`);
+        let outcomeText = gameOutcome(player, comp);
+        console.log(outcomeText);
     </script>
 </body>
 
