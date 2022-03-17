@@ -26,51 +26,81 @@
         //returns a string that declares winner
         //game rules: paper beats rock, scissors beats paper, rock beats scissors, same outcome = tie
         //if player = paper, check if comp = rock or comp = scissors, else tie
-        function gameOutcome(playerSelection, computerSelection) {
+        function playRound(playerSelection, computerSelection) {
             if (playerSelection === computerSelection) {
-                return "It's a tie!";
+                console.log("It's a tie!");
+                return -1;
             }
             switch (playerSelection) {
                 case "rock":
                     if (computerSelection === "paper") {
-                        return "You lose! Paper beats Rock!";
+                        console.log("You lose! Paper beats Rock!");
+                        return 0;
                     } else {
-                        return "You win! Rock beats Scissors!";
+                        console.log("You win! Rock beats Scissors!");
+                        return 1;
                     }
                     break;
                 case "paper":
                     if (computerSelection === "rock") {
-                        return "You win! Paper beats Rock!";
+                        console.log("You win! Paper beats Rock!");
+                        return 1;
                     } else {
-                        return "You lose! Scissors beats Paper!";
+                        console.log("You lose! Scissors beats Paper!");
+                        return 0;
                     }
                     break;
                 case "scissors":
                     if (computerSelection === "rock") {
-                        return "You lose! Rock beats Scissors!";
+                        console.log("You lose! Rock beats Scissors!");
+                        return 0;
                     } else {
-                        return "You win! Scissors beats Paper!";
+                        console.log("You win! Scissors beats Paper!");
+                        return 1;
                     }
                     break;
             }
         };
 
         //START GAME:
-        alert("Lets play Rock, Paper, Scissors!");
+        function game() {
+            let playerCount = 0;
+            let computerCount = 0;
+            let roundOutcome = 0;
+            alert("Lets play Rock, Paper, Scissors!");
+            for (let i = 1; i <= 5; i++) {
 
-        //Player's Turn:
-        let player = prompt("Choose Rock, Paper or Scissors").toLowerCase();
-        //check input until valid
-        while (player !== "rock" && player !== "paper" && player !== "scissors") {
-            player = prompt("Choose Rock, Paper or Scissors").toLowerCase();
+                //Player's Turn:
+                let player = prompt(`Round ${i}: Choose Rock, Paper or Scissors`).toLowerCase();
+                //check input until valid
+                while (player !== "rock" && player !== "paper" && player !== "scissors") {
+                    player = prompt(`Round ${i}: Choose Rock, Paper or Scissors`).toLowerCase();
+                }
+                console.log(`Round ${i}:`);
+                console.log(`Player: ${player}`);
+                //Computer's Turn:
+                let comp = computerPlay();
+                console.log(`Computer: ${comp}`);
+
+                roundOutcome = playRound(player, comp);
+                switch (roundOutcome) {
+                    case 1:
+                        playerCount += 1;
+                        break;
+                    case 0:
+                        computerCount += 1;
+                        break;
+                }
+            }
+            if (playerCount > computerCount) {
+                console.log("YOU WIN THE GAME!");
+            } else if (playerCount < computerCount) {
+                console.log("YOU LOSE THE GAME!");
+            } else {
+                console.log("TIE GAME!");
+            }
         }
-        console.log(`Player: ${player}`);
-
-        //Computer's Turn:
-        let comp = computerPlay();
-        console.log(`Computer: ${comp}`);
-        let outcomeText = gameOutcome(player, comp);
-        console.log(outcomeText);
+        game();
     </script>
 </body>
 
