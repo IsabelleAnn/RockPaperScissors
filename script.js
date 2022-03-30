@@ -52,13 +52,13 @@ playAgainBtn.addEventListener('click', () => {
 function checkPoints(playerPoints, computerPoints) {
     if (playerPoints === 5) {
         grin.style.display = 'block';
-        endResult.textContent = 'YOU WIN THE GAME!';
+        endResult.textContent = 'YOU WON THE GAME!';
         gameStarted.style.display = 'none';
         endGame.style.display = 'block';
     }
     if (computerPoints === 5) {
         frown.style.display = 'block';
-        endResult.textContent = "YOU LOSE THE GAME!";
+        endResult.textContent = "YOU LOST THE GAME!";
         gameStarted.style.display = 'none';
         endGame.style.display = 'block';
     }
