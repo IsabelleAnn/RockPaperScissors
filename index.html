@@ -3,105 +3,65 @@
 
 <head>
     <title>Rock Paper Scissors</title>
+    <script src="script.js" defer></script>
     <meta charset="utf-8">
+    <script src="https://kit.fontawesome.com/c8a8ee493a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rock+3D&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <script>
-        //computerPlay function RANDOMLY returns "Rock", "Paper", or "Scissors".
-        //create an array that holds strings "Rock", "Paper", "Scissors"
-        //get a random number from 0 (starting index of array) to lenghth of array minus 1
-        // - create a function to randomly get a number between given min and max args
-        function computerPlay() {
-            let array = ["rock", "paper", "scissors"];
-            return array[getRandom(0, array.length)];
-        }
+    <div id="header-container">
+        <h1 id="header">Rock-Paper-Scissors</h1>
+        <h3>First to 5 points wins!</h3>
+        <div class="player-section-container">
+            <div class="player-container">
+                <img src="images/you.png">
+                <h3 class="player-name">You</h3>
+                <p class="score" id="player-score">0</p>
+            </div>
 
-        function getRandom(min, max) {
-            return Math.floor(Math.random() * (max - 0) + 0);
-        }
+            <div>
+                <h3 id="vs">VS</h3>
+            </div>
+            <div class="player-container">
+                <img src="images/computer.png">
+                <h3 class="player-name">The Computer</h3>
+                <p class="score" id="computer-score">0</p>
+            </div>
+        </div>
 
-        //function that plays one round of rock, paper, scissors:
-        //parameters are playerSelection and computerSelection
-        //returns a string that declares winner
-        //game rules: paper beats rock, scissors beats paper, rock beats scissors, same outcome = tie
-        //if player = paper, check if comp = rock or comp = scissors, else tie
-        function playRound(playerSelection, computerSelection) {
-            if (playerSelection === computerSelection) {
-                console.log("It's a tie!");
-                return -1;
-            }
-            switch (playerSelection) {
-                case "rock":
-                    if (computerSelection === "paper") {
-                        console.log("You lose! Paper beats Rock!");
-                        return 0;
-                    } else {
-                        console.log("You win! Rock beats Scissors!");
-                        return 1;
-                    }
-                    break;
-                case "paper":
-                    if (computerSelection === "rock") {
-                        console.log("You win! Paper beats Rock!");
-                        return 1;
-                    } else {
-                        console.log("You lose! Scissors beats Paper!");
-                        return 0;
-                    }
-                    break;
-                case "scissors":
-                    if (computerSelection === "rock") {
-                        console.log("You lose! Rock beats Scissors!");
-                        return 0;
-                    } else {
-                        console.log("You win! Scissors beats Paper!");
-                        return 1;
-                    }
-                    break;
-            }
-        };
+        <!--Delete after click:-->
+        <div id="subheader">
+            <h2 class="subheader-item">Are you ready?</h2>
+            <button class="subheader-item play-btn" id="play">PLAY</button>
+        </div>
 
-        //START GAME:
-        function game() {
-            let playerCount = 0;
-            let computerCount = 0;
-            let roundOutcome = 0;
-            alert("Lets play Rock, Paper, Scissors!");
-            for (let i = 1; i <= 5; i++) {
+    </div>
 
-                //Player's Turn:
-                let player = prompt(`Round ${i}: Choose Rock, Paper or Scissors`).toLowerCase();
-                //check input until valid
-                while (player !== "rock" && player !== "paper" && player !== "scissors") {
-                    player = prompt(`Round ${i}: Choose Rock, Paper or Scissors`).toLowerCase();
-                }
-                console.log(`Round ${i}:`);
-                console.log(`Player: ${player}`);
-                //Computer's Turn:
-                let comp = computerPlay();
-                console.log(`Computer: ${comp}`);
+    <!--Add after click on play-btn:-->
+    <div id="game-started" class="hide">
+        <p>Choose Wisely:</p>
+        <div id="btn-container">
+            <button class="game-btn" id="rock"><i class="fa-regular fa-hand-back-fist"></i><p>Rock</p></button>
+            <button class="game-btn" id="paper"><i class="fa-regular fa-hand"></i><p>Paper</p></button>
+            <button class="game-btn" id="scissors"><i class="fa-regular fa-hand-scissors"></i><p>Scissors</p></button>
+        </div>
+        <div id="results-container">
+            <h2 id="results"></h2>
+        </div>
+    </div>
 
-                roundOutcome = playRound(player, comp);
-                switch (roundOutcome) {
-                    case 1:
-                        playerCount += 1;
-                        break;
-                    case 0:
-                        computerCount += 1;
-                        break;
-                }
-            }
-            if (playerCount > computerCount) {
-                console.log("YOU WIN THE GAME!");
-            } else if (playerCount < computerCount) {
-                console.log("YOU LOSE THE GAME!");
-            } else {
-                console.log("TIE GAME!");
-            }
-        }
-        game();
-    </script>
+    <div id="end-game" class="hide">
+        <i class="fa-solid fa-face-frown-open hide" id="frown"></i>
+        <i class="fa-solid fa-face-grin-wide hide" id="grin"></i>
+        <div class="end-game-item" id="end-result"></div>
+        <button class="end-game-item play-btn" id="play-again">PLAY AGAIN</button>
+    </div>
+
 </body>
 
 </html>

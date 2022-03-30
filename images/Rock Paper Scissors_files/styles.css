@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(31, 31, 31);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: 'Dosis', sans-serif;
+    font-size: 20px;
+}
+
+button {
+    border: none;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#header {
+    font-family: 'Rock 3D', cursive;
+    font-size: 70px;
+    font-weight: 100;
+}
+
+.player-section-container {
+    display: flex;
+    align-items: center;
+}
+
+.player-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border: white solid 1px;
+    width: 250px;
+    height: 300px;
+    margin: 30px;
+}
+
+.player-container>img {
+    height: 165px;
+}
+
+#vs {
+    font-size: 70px;
+    color: greenyellow;
+}
+
+.player-name {
+    padding: 10px 0px;
+    border-top: white solid 2px;
+    border-bottom: white solid 2px;
+    width: inherit;
+    text-align: center;
+    background-color: greenyellow;
+    color: rgb(31, 31, 31);
+}
+
+.score {
+    font-weight: bold;
+}
+
+.subheader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subheader-item {
+    margin: 15px;
+}
+
+#play-btn {
+    width: 200px;
+    height: 50px;
+    font-family: 'Dosis', sans-serif;
+    font-size: 35px;
+    color: rgb(31, 31, 31);
+    background-color: greenyellow;
+}
+
+.btn-container {
+    display: flex;
+}
+
+.game-btn img {
+    width: 200px;
+}
+
+.game-btn {
+    margin: 15px;
+    background: none;
+    border: solid 2px greenyellow;
+}
