@@ -37,7 +37,7 @@ button {
     font-family: 'Rock 3D', cursive;
     font-size: 70px;
     font-weight: 100;
-    Part of The Odin Project Curriculum margin: 15px;
+    margin: 15px;
 }
 
 .player-section-container {
@@ -77,6 +77,10 @@ button {
 
 .score {
     font-weight: bold;
+}
+
+.play-history {
+    font-size: 20px;
 }
 
 #subheader {

@@ -22,6 +22,9 @@
                 <img src="images/you.png">
                 <h3 class="player-name">You</h3>
                 <p class="score" id="player-score">0</p>
+                <i class="player-rock play-history hide fa-regular fa-hand-back-fist"></i>
+                <i class="player-paper play-history hide fa-regular fa-hand"></i>
+                <i class="player-scissors play-history hide fa-regular fa-hand-scissors"></i>
             </div>
 
             <div>
@@ -31,7 +34,11 @@
                 <img src="images/computer.png">
                 <h3 class="player-name">The Computer</h3>
                 <p class="score" id="computer-score">0</p>
+                <i class="computer-rock play-history hide fa-regular fa-hand-back-fist"></i>
+                <i class="computer-paper play-history hide fa-regular fa-hand"></i>
+                <i class="computer-scissors play-history hide fa-regular fa-hand-scissors"></i>
             </div>
+
         </div>
 
         <!--Delete after click:-->
@@ -44,7 +51,7 @@
 
     <!--Add after click on play-btn:-->
     <div id="game-started" class="hide">
-        <p>Choose Wisely:</p>
+        <p id="choose">Choose Wisely:</p>
         <div id="btn-container">
             <button class="game-btn" id="rock"><i class="fa-regular fa-hand-back-fist"></i><p>Rock</p></button>
             <button class="game-btn" id="paper"><i class="fa-regular fa-hand"></i><p>Paper</p></button>

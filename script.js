@@ -14,17 +14,27 @@ const playerScoreText = document.querySelector('#player-score');
 let computerScore = 0;
 const computerScoreText = document.querySelector('#computer-score');
 
+
 //play round and check outcome of round
 const rock = document.querySelector('#rock');
 rock.addEventListener('click', () => {
+    document.querySelector('.player-rock').style.display = 'block';
+    document.querySelector('.player-paper').style.display = 'none';
+    document.querySelector('.player-scissors').style.display = 'none';
     playRound('rock', computerPlay());
 });
 const paper = document.querySelector('#paper');
 paper.addEventListener('click', () => {
+    document.querySelector('.player-rock').style.display = 'none';
+    document.querySelector('.player-paper').style.display = 'block';
+    document.querySelector('.player-scissors').style.display = 'none';
     playRound('paper', computerPlay());
 });
 const scissors = document.querySelector('#scissors');
 scissors.addEventListener('click', () => {
+    document.querySelector('.player-rock').style.display = 'none';
+    document.querySelector('.player-paper').style.display = 'none';
+    document.querySelector('.player-scissors').style.display = 'block';
     playRound('scissors', computerPlay());
 });
 
@@ -41,11 +51,19 @@ playAgainBtn.addEventListener('click', () => {
     frown.style.display = 'none';
     endGame.style.display = 'none';
     gameStarted.style.display = 'block';
+    document.querySelector('#btn-container').style.display = 'flex';
+    document.querySelector('#choose').style.display = 'block';
     playerScore = 0;
     computerScore = 0;
     playerScoreText.textContent = `${playerScore}`;
     computerScoreText.textContent = `${computerScore}`;
     resultText.textContent = "";
+    document.querySelector('.computer-rock').style.display = 'none';
+    document.querySelector('.computer-paper').style.display = 'none';
+    document.querySelector('.computer-scissors').style.display = 'none';
+    document.querySelector('.player-rock').style.display = 'none';
+    document.querySelector('.player-paper').style.display = 'none';
+    document.querySelector('.player-scissors').style.display = 'none';
 });
 
 //check if a player reached 5 points and display winner
@@ -53,12 +71,16 @@ function checkPoints(playerPoints, computerPoints) {
     if (playerPoints === 5) {
         grin.style.display = 'block';
         endResult.textContent = 'YOU WON THE GAME!';
+        document.querySelector('#choose').style.display = 'none';
+        document.querySelector('#btn-container').style.display = 'none';
         gameStarted.style.display = 'none';
         endGame.style.display = 'block';
     }
     if (computerPoints === 5) {
         frown.style.display = 'block';
-        endResult.textContent = "YOU LOST THE GAME!";
+        endResult.textContent = 'YOU LOST THE GAME!';
+        document.querySelector('#choose').style.display = 'none';
+        document.querySelector('#btn-container').style.display = 'none';
         gameStarted.style.display = 'none';
         endGame.style.display = 'block';
     }
@@ -68,7 +90,22 @@ function checkPoints(playerPoints, computerPoints) {
 //computerPlay function RANDOMLY returns "Rock", "Paper", or "Scissors".
 function computerPlay() {
     let array = ["rock", "paper", "scissors"];
-    return array[getRandom(0, array.length)];
+    let compMove = array[getRandom(0, array.length)];
+    console.log(compMove);
+    if (compMove === "rock") {
+        document.querySelector('.computer-rock').style.display = 'block';
+        document.querySelector('.computer-paper').style.display = 'none';
+        document.querySelector('.computer-scissors').style.display = 'none';
+    } else if (compMove === "paper") {
+        document.querySelector('.computer-rock').style.display = 'none';
+        document.querySelector('.computer-paper').style.display = 'block';
+        document.querySelector('.computer-scissors').style.display = 'none';
+    } else if (compMove === "scissors") {
+        document.querySelector('.computer-rock').style.display = 'none';
+        document.querySelector('.computer-paper').style.display = 'none';
+        document.querySelector('.computer-scissors').style.display = 'block';
+    }
+    return compMove;
 }
 //return random number
 function getRandom(min, max) {
@@ -79,6 +116,7 @@ function getRandom(min, max) {
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         resultText.textContent = "This round is a tie!";
+        return;
     }
     switch (playerSelection) {
         case "rock":
@@ -87,6 +125,7 @@ function playRound(playerSelection, computerSelection) {
                 computerScore++;
                 checkPoints(playerScore, computerScore);
                 computerScoreText.textContent = `${computerScore}`;
+
             } else {
                 playerScore++;
                 checkPoints(playerScore, computerScore);
