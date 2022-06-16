@@ -149,7 +149,20 @@ button {
     display: none;
 }
 
-#footer {
+#footer,
+#footer i {
     font-size: 15px;
     margin-top: auto;
+}
+
+#footer a:link,
+#footer a:active {
+    text-decoration: none;
+    color: white;
+}
+
+#footer a:hover,
+#footer a:visited {
+    text-decoration: none;
+    color: yellowgreen;
 }
